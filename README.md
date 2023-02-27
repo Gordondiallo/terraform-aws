@@ -1,2 +1,3 @@
 # terraform-aws
 creating AWS resources with terraform
+Create Ec2 Instances,vpc,subnets,security-group,key-pair...
