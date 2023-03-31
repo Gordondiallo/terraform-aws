@@ -10,10 +10,9 @@ resource "aws_eip" "terraform-eip" {
     aws_instance.gordon-ec2
   ]
   tags = {
-    Name = "Terraform-eip"
-    Environment = "Testing"
-    Owner = "The great gordon-DevOps"
-    Created-by = "Gordon"
+    Name = var.eip_name
+    Environment = var.Environment
+    Created-by = var.Owner
   }
 }
 
@@ -50,9 +49,8 @@ egress {
   ]
  tags = {
     Name = "Gordon-terraform-SG"
-    Environment = "Testing"
-    Owner = "The great gordon-DevOps"
-    Created-by = "Terraform"
+    Environment = var.Environment
+    Created-by = var.Owner
   }
 }
 
@@ -66,9 +64,8 @@ resource "aws_instance" "gordon-ec2" {
 
   tags = {
     Name = var.instance_name
-    Environment = "Testing"
-    Owner = "The great gordon-DevOps"
-    Created-by = "Terraform"
+    Environment = var.Environment
+    Created-by = var.Owner
   }
 }
 

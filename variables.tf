@@ -34,11 +34,40 @@ variable "public_subnet_cidrs" {
 variable "private_subnet_cidrs" {
  type        = list(string)
  description = "Private Subnet CIDR values"
- default     = ["10.0.3.0/24", "10.0.4.0/24"]
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
 }
 variable "vpc_cidr" {
     type = string
     default = "10.0.0.0/16"
     description = "CIDR for VPC "
+    
+}
+
+variable "instance_tenancy" {
+    type = string
+    description = "Define instance tenancy in VPC"
   
+}
+
+variable "vpc_name" {
+    type = string
+    default = ""
+    description = "Name of VPC"
+}
+
+variable "Owner" {
+    type = string
+    default = ""
+    description = "Owner of VPC resource"  
+}
+
+variable "Environment" {
+    type = string
+    default = ""
+    description = "Environment of VPC resource"  
+}
+
+variable "eip_name" {
+    type = string
+    description = "Name tag for EIP"
 }

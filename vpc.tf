@@ -1,12 +1,12 @@
 resource "aws_vpc" "Gordon-vpc" {
   cidr_block     = var.vpc_cidr
-  instance_tenancy = "default"
+  instance_tenancy = var.instance_tenancy
 
 
   tags = {
-    Name = "terraform-vpc"
-    created-by = "Gordon"
-    Environment = "Practice"
+    Name = var.vpc_name
+    created-by = var.Owner
+    Environment = var.Environment
   }
 }
 
@@ -16,9 +16,9 @@ resource "aws_subnet" "public-subnet" {
   map_public_ip_on_launch = true
   cidr_block = element(var.public_subnet_cidrs, count.index)
   tags = {
-    "Name" = "terraform-public-${count.index}"
-    Environment = "Practice"
-    Created-by = "Gordon"
+    Name = "terraform-public-${count.index}"
+    Environment = var.Environment
+    Created-by = var.Owner
   }
 }
 
@@ -28,8 +28,8 @@ resource "aws_subnet" "private-subnet" {
   cidr_block = element(var.private_subnet_cidrs, count.index)
   tags = {
     "Name" = "terraform-private-${count.index}"
-    Environment = "Practice"
-    Created-by = "Gordon"
+    Environment = var.Environment
+    Created-by = var.Owner
   }
 }
 
@@ -37,8 +37,8 @@ resource "aws_internet_gateway" "terraform-igw" {
   vpc_id = aws_vpc.Gordon-vpc.id
   tags = {
     Name = "Terraform-igw"
-    Created-by = "Gordon"
-    Environment = "Practice"
+    Created-by = var.Owner
+    Environment = var.Environment
   }
 }
 
@@ -51,8 +51,8 @@ resource "aws_route_table" "terraform-rt" {
   }
   tags = {
     Name = "Terraform-rt"
-    Created-by = "Gordon"
-    Environment = "Practice"
+    Created-by = var.Owner
+    Environment = var.Environment
   }
 }
 
