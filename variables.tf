@@ -1,3 +1,5 @@
+# Create a Terraform.tfvars file to make this terraform stack work.
+
 variable "private_key" {
     type = string
     default = ""
